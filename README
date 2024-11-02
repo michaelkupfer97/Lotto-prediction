@@ -1,0 +1,52 @@
+Lotto Number Prediction with Ensemble Learning
+This project investigates different machine learning models for predicting lottery numbers. It explores Random Forest, ARIMA, and LSTM models for predicting the next draw of a specific lottery (data source: Lotto.csv).
+
+Dependencies
+This project requires the following Python libraries:
+
+pandas
+numpy
+scikit-learn
+statsmodels
+tensorflow
+Installation:
+
+Bash
+pip install pandas numpy scikit-learn statsmodels tensorflow
+
+Data Preprocessing
+The script assumes the data is stored in a CSV file named Lotto.csv. It performs the following pre-processing steps:
+
+Read the CSV file with pandas.
+Reset the index and drop unnecessary rows.
+Delete specific columns not used for prediction.
+Assign meaningful column names to the remaining six numerical columns and a "strong" column (interpretation depends on the data).
+Shift the feature columns by one time step for training and drop rows with missing values.
+Split the data into training and testing sets.
+Models
+The script implements three different prediction models:
+
+1. Random Forest:
+
+Trains a separate Random Forest classifier for each numerical column (num1 to num6) and the "strong" column.
+Predicts the next value for each column based on the trained models.
+2. ARIMA:
+
+Fits an ARIMA model (order: (5, 1, 0) - adjust as needed) to each numerical column individually.
+Forecasts the next value for each column using the fitted model.
+3. LSTM:
+
+Creates sequences of past lottery draws with a defined length (10 in this example).
+Trains an LSTM model to predict the next lottery draw based on the past sequences.
+Note: These are basic implementations and can be improved with hyperparameter tuning and feature engineering.
+
+Running the Script
+Save the script as lotto_prediction.py.
+Ensure the Lotto.csv file is in the same directory.
+Run the script from the command line: python lotto_prediction.py
+Output
+The script prints the predictions for the next draw from each model:
+
+Random Forest predictions for each column.
+ARIMA predictions for each column.
+LSTM predictions for all columns combined.
